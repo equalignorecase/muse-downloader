@@ -12,23 +12,6 @@ WebExtension เดิม (manifest v2/v3, React popup, content/background scrip
 เก็บไว้ข้างโฟลเดอร์นี้เพื่ออ้างอิง. Package นี้เขียน pipeline การดาวน์โหลดใหม่
 ด้วย Python ธรรมดา.
 
-## การแมปจาก extension มาเป็น Python
-
-| ไฟล์เดิม | ไฟล์ Python ที่แทน |
-| --- | --- |
-| `src/content/content.js` | `musescore_downloader/downloader.py` |
-| `src/content/tokenAlgorithm.js` | `musescore_downloader/token.py` |
-| `src/content/scrape.js` + `src/background/background.js` | `musescore_downloader/browser.py` (Playwright) |
-| `src/modules/utils.js` (`fetchApiUrl`) | `musescore_downloader/api.py` |
-| `src/modules/utils.js` (ตัวช่วยอื่น ๆ) | `musescore_downloader/utils.py` |
-| `pdfmake` สำหรับสร้าง PDF | `musescore_downloader/pdf.py` (ReportLab) |
-| React popup | `musescore_downloader/cli.py` |
-| browser cookie session | `--cookie`, `--cookie-file`, `--cookies-from-browser` |
-
-Extension อ่าน metadata ของ score จาก DOM. พอร์ต Python อ่าน HTML ชุดเดียวกัน
-(`ld+json`, `og:*` meta tags, ลิงก์ `score_0.svg/png` และ regex นับจำนวนหน้า)
-ด้วย standard library.
-
 ## ติดตั้ง
 
 ```bash
