@@ -1,0 +1,53 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "musescore-downloader"
+version = "0.1.0"
+description = "Python port of the Music Score Downloader browser extension"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "ingui-n (original extension), Python port contributors"}]
+keywords = ["musescore", "sheet-music", "midi", "mp3", "pdf", "downloader"]
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+]
+dependencies = ["requests>=2.31"]
+
+[project.optional-dependencies]
+pdf = [
+  "reportlab>=4.0",
+  "svglib>=1.5",
+  "pillow>=10.0",
+]
+browser = ["playwright>=1.40", "curl-cffi>=0.7"]
+browsers = ["browser-cookie3>=0.19"]
+all = [
+  "reportlab>=4.0",
+  "svglib>=1.5",
+  "pillow>=10.0",
+  "playwright>=1.40",
+  "curl-cffi>=0.7",
+  "browser-cookie3>=0.19",
+]
+
+[project.scripts]
+musescore-downloader = "musescore_downloader.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["musescore_downloader*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+ignore = ["E501"]

@@ -1,0 +1,11 @@
+# Core + PDF support
+requests>=2.31
+reportlab>=4.0
+svglib>=1.5
+pillow>=10.0
+
+# Optional: browser mode (recommended for Cloudflare-protected pages)
+# playwright>=1.40
+# curl-cffi>=0.7
+# Optional: read cookies from a local browser profile
+# browser-cookie3>=0.19
